@@ -8,6 +8,11 @@ colSums(is.na(data))
 install.packages("ggplot2")
 library(ggplot2)
 
+data$performance_band <- ifelse(data$average_score >= 85, "Excellent",
+                           ifelse(data$average_score >= 70, "Good",
+                           ifelse(data$average_score >= 50, "Average",
+                                  "Poor")))
+
 hist(data$math.score,main = "Histogram of Maths Score",
      xlab = "Maths Score",
      col = "lightblue")
@@ -37,4 +42,5 @@ hist(data$reading.score,
      main = "Histogram of Reading Score",
      xlab = "Reading Score",
      col = "lightcoral",
+
      border = "black")
